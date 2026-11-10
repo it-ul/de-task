@@ -1,0 +1,67 @@
+{
+  "model_name": "catboost_base_v1",
+  "as_of": "2026-10-26",
+  "train": [
+    "2026-07-26",
+    "2026-10-05"
+  ],
+  "test": [
+    "2026-10-05",
+    "2026-10-26"
+  ],
+  "features": [
+    "body_type",
+    "weight_category",
+    "volume_category",
+    "origin_city",
+    "origin_region",
+    "dest_city",
+    "dest_region",
+    "distance_km",
+    "total_weight",
+    "total_volume",
+    "origin_lat",
+    "origin_lon",
+    "dest_lat",
+    "dest_lon",
+    "year",
+    "month",
+    "day_of_week",
+    "day_of_year",
+    "month_sin",
+    "month_cos",
+    "day_of_week_sin",
+    "day_of_week_cos",
+    "day_of_year_sin",
+    "day_of_year_cos"
+  ],
+  "cat_features": [
+    "body_type",
+    "weight_category",
+    "volume_category",
+    "origin_city",
+    "origin_region",
+    "dest_city",
+    "dest_region"
+  ],
+  "metrics_on_test": {
+    "catboost_base_v1": {
+      "R2": 0.8947,
+      "MAPE_pct": 17.7,
+      "RMSE_rub": 62067.8,
+      "MAE_rub": 32737.96
+    },
+    "Ridge": {
+      "R2": 0.8262,
+      "MAPE_pct": 49.14,
+      "RMSE_rub": 79757.31,
+      "MAE_rub": 50241.28
+    },
+    "DecisionTreeRegressor": {
+      "R2": 0.8846,
+      "MAPE_pct": 17.64,
+      "RMSE_rub": 64998.13,
+      "MAE_rub": 34258.04
+    }
+  }
+}

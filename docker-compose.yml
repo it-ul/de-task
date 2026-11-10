@@ -1,0 +1,32 @@
+services:
+  pg17:
+    image: postgres:17
+    environment:
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "${DWH_PORT:-5432}:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -q -U postgres -d postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  pipeline:
+    build: .
+    command: bash pipeline.sh
+    environment:
+      DWH_HOST: pg17
+      PGPASSWORD: postgres
+      N_PRICES: ${N_PRICES:-300000}
+    volumes:
+      - ./sql:/sql:ro
+      - ./pipeline.sh:/app/pipeline.sh:ro
+    depends_on:
+      pg17:
+        condition: service_healthy
+
+volumes:
+  pgdata:
+

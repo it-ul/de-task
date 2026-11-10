@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Docker runtime
+pgdata/
+
+# Environment and secrets
+.env
+*.env
+
+# IDE and OS junk
+.idea/
+.vscode/
+.DS_Store
+
+catboost_info/
